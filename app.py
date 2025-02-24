@@ -600,8 +600,8 @@ class WaterSimulation:
 
     
     def scale2out(self):
-        # canvas = 900 * 900
-        xyfactor = 900 / LmeshX / 2
+        # canvas = 500 * 500
+        xyfactor = 500 / LmeshX / 2
         for i in range(self.Num_cell):
             self.pos_cell_out[i]["x"] = ( self.pos_cell[i, 0] + LmeshX ) * xyfactor
             self.pos_cell_out[i]["y"] = (self.pos_cell[i, 1] + LmeshY ) * xyfactor
@@ -612,7 +612,7 @@ class WaterSimulation:
             
     # only works for matplotlib < 3.8
 #    def water2out(self):
-#        xyfactor = 900 / LmeshX / 2
+#        xyfactor = 500 / LmeshX / 2
 #        contours =  plt.contour(self.XX, self.YY,
 #            np.reshape(self.u.vector()[vertex_to_dof_map(self.V)], (NmeshY+1,NmeshX+1)),
 #            levels=[ 0.25, 0.5, 1.0, 1.5]
@@ -623,7 +623,7 @@ class WaterSimulation:
 #        self.water150 = [{"x": (p.vertices[:,0] + LmeshX) * xyfactor, "y": (p.vertices[:,1] + LmeshY) * xyfactor } for p in contours.collections[3].get_paths()]
 
     def water2out(self, levels=[0.25, 0.5, 1.0, 1.5]):
-        xyfactor = 900 / LmeshX / 2
+        xyfactor = 500 / LmeshX / 2
         contours =  plt.contour(self.XX, self.YY,
             np.reshape(self.u.vector()[vertex_to_dof_map(self.V)], (NmeshY+1,NmeshX+1)),
             levels=levels
