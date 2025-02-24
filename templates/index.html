@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Simulation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        #error-message {
+            color: red;
+            display: none;
+        }
+        .controls {
+            margin: 10px 0;
+        }
+        .control-group {
+            margin: 5px 0;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+        .legend {
+            position: absolute;
+            top: 400px;
+            left: 950px; /* Adjust based on your layout */
+            padding: 10px;
+            background-color: white;
+            border: 1px solid black;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label for="capillaryStrength">Capillary Strength:</label>
+            <input type="range" id="capillaryStrength" min="0.0" max="0.02" step="0.001" value="0.01">
+            <span id="capillaryStrengthValue">0.01</span>
+        </div>
+        <div class="control-group">
+            <label for="meanReversalTime">Mean Reversal Time:</label>
+            <input type="range" id="meanReversalTime" min="0.01" max="2" step="0.01" value="1.0">
+            <span id="meanReversalTimeValue">1.0</span>
+        </div>
+    </div>
+    <div class="legend">
+        <h3>Water height</h3>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #414584;"></div>
+            <span>Water 12.5%</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #43848c;"></div>
+            <span>Water 25%</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #7fc96c;"></div>
+            <span>Water 50%</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #cadf4f;"></div>
+            <span>Water 75%</span>
+        </div>
+    </div>
+    <canvas id="simulation" width="900" height="900"></canvas>
+    <div id="error-message">Cannot connect to simulation backend</div>
+    <script src="{{ url_for('static', filename='js/simulation.js') }}"></script>
+</body>
+</html>
